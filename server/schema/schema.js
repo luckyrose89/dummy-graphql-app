@@ -93,6 +93,15 @@ const Mutation = new GraphQLObjectType({
         return author.save();
       }
     },
+    deleteAuthor: {
+      type: AuthorType,
+      args: {
+        name: { type: GraphQLString }
+      },
+      resolve(parent, args) {
+        //delete an author
+      }
+    },
     addBook: {
       type: BookType,
       args: {
@@ -107,6 +116,15 @@ const Mutation = new GraphQLObjectType({
           authorId: args.authorId
         });
         return book.save();
+      }
+    },
+    deleteBook: {
+      type: BookType,
+      args: {
+        name: { type: GraphQLString }
+      },
+      resolve(parent, args) {
+        // delete a book
       }
     }
   }
