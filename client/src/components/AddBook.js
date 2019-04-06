@@ -13,7 +13,23 @@ const AddBooksQuery = gql`
 
 class AddBook extends Component {
   render() {
-    return <div>Form to add new books to db</div>;
+    return (
+      <form id="addBook">
+        <div className="field">
+          <label>Book name</label>
+          <input type="text" />
+        </div>
+        <div className="field">
+          <label>Author</label>
+          <input type="text" />
+        </div>
+        <div className="field">
+          <label>Genre</label>
+          <input type="text" />
+        </div>
+        <button>+</button>
+      </form>
+    );
   }
 }
 
