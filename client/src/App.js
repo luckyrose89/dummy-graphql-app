@@ -5,6 +5,7 @@ import { ApolloProvider } from "react-apollo";
 //components
 import BookList from "./components/BookList";
 import AddBook from "./components/AddBook";
+import GlobalStyle from "./themes/style";
 
 //Apollo client setup
 const client = new ApolloClient({
@@ -15,7 +16,8 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div className="App">
+        <GlobalStyle />
+        <div>
           <h1>Reading List</h1>
           <BookList />
           <AddBook />
