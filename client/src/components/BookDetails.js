@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
+import styled from "styled-components";
 import { getBookQuery } from "../queries/queries";
+
+const Details = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: #88084f;
+  padding: 30px;
+  overflow: auto;
+  box-shadow: -2px -3px 5px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  box-sizing: border-box;
+`;
 
 class BookDetails extends Component {
   displayBookDetails() {
@@ -29,9 +44,9 @@ class BookDetails extends Component {
   }
   render() {
     return (
-      <div id="details">
+      <Details>
         <p>{this.displayBookDetails()}</p>
-      </div>
+      </Details>
     );
   }
 }
