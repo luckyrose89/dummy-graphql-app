@@ -1,10 +1,48 @@
 import React, { Component } from "react";
 import { graphql, compose } from "react-apollo";
+import styled from "styled-components";
 import {
   getBooksQuery,
   getAuthorsQuery,
   addBookMutation
 } from "../queries/queries";
+
+const AddBookForm = styled.form`
+  background: #ffffff;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 400px;
+  label {
+    text-align: right;
+    padding: 6px;
+  }
+`;
+
+const Field = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+`;
+
+const InputStyle = styled.input`
+  margin: 4px;
+  padding: 6px;
+`;
+
+const Button = styled.button`
+  color: #fff;
+  font-size: 2em;
+  background: #ad1457;
+  border: 0;
+  padding: 0 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+`;
 
 class AddBook extends Component {
   constructor(props) {
@@ -52,24 +90,24 @@ class AddBook extends Component {
   }
   render() {
     return (
-      <form id="addBook" onSubmit={this.handleSubmit}>
-        <div className="field">
+      <AddBookForm id="addBook" onSubmit={this.handleSubmit}>
+        <Field>
           <label>Book name</label>
-          <input type="text" name="name" onChange={this.handleChange} />
-        </div>
-        <div className="field">
+          <InputStyle type="text" name="name" onChange={this.handleChange} />
+        </Field>
+        <Field>
           <label>Author</label>
-          <select name="authorId" onChange={this.handleChange}>
+          <InputStyle as="select" name="authorId" onChange={this.handleChange}>
             <option>Select author</option>
             {this.displayAuthor()}
-          </select>
-        </div>
-        <div className="field">
+          </InputStyle>
+        </Field>
+        <Field>
           <label>Genre</label>
-          <input type="text" name="genre" onChange={this.handleChange} />
-        </div>
-        <button>+</button>
-      </form>
+          <InputStyle type="text" name="genre" onChange={this.handleChange} />
+        </Field>
+        <Button>+</Button>
+      </AddBookForm>
     );
   }
 }
